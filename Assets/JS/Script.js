@@ -59,6 +59,7 @@ function selectAnswer(e) {
   } else {
     startButton.innerText = 'Restart'
     startButton.classList.remove('hide')
+    window.prompt("Congratulations! You have ended the game with a score of" + answer.correct.total + "." + "Record your high score below.")
   }
 }
 
@@ -75,6 +76,16 @@ function clearStatusClass(element) {
   element.classList.remove('correct')
   element.classList.remove('wrong')
 }
+
+var timeleft = 10;
+var downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+  }
+  document.getElementById("progressBar").value = 10 - timeleft;
+  timeleft -= 1;
+}, 1000);
+<progress value="0" max="10" id="progressBar"></progress>
 
 const questions = [
   {
